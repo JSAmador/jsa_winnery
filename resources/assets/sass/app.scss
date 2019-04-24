@@ -7,3 +7,20 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sidebar {
+  flex-grow: 1;
+  ul {
+    list-style: none;
+  }
+}
+
+.content {
+  flex-grow:2;
+}
