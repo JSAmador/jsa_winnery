@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container waiter-container">
         <nav id="sidebar">
             <h3>Dashboard</h3>
             <ul>
-                <li><a href="http://localhost/jsa_winnery/public/admin/orders">Orders</a></li>
-                <li><a href="http://localhost/jsa_winnery/public/admin/tables">Tables</a></li>
-                <li><a href="http://localhost/jsa_winnery/public/admin/wines">Wines</a></li>
+                <li><a href="/orders">Orders</a></li>
+                <li><a href="/tables">Tables</a></li>
+                <li><a href="/wines">Wines</a></li>
             </ul>
         </nav>
         <div class="content">
@@ -30,7 +30,7 @@
                                 @foreach($tables as $table)
                                     <tr @if($table->is_available == 0) class="not-available" @endif>
 
-                                        <td><a href="{{'/table/'. $table->id}}">@if($table->waiter_id == 0)Get Table</a>  @else View Table @endif</td>
+                                        <td><a href="{{'/table/'. $table->id}}">@if($table->waiter_id == 1)Get Table</a>  @else View Table @endif</td>
                                         <td>{{$table->table_num}}"</td>
                                         <td>@if($table->waiter_id != 1){{$table->waiter->name}} @endif</td>
                                     </tr>

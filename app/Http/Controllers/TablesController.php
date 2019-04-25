@@ -26,9 +26,15 @@ class TablesController extends Controller
         $user = Auth::user()->id;
         $wines = Wine::all();
         $pick_wines = Wine::whereDay('date', date('d'))->get();
-        DB::table('tables')
-            ->where('id', $id)
-            ->update(['waiter_id' => $user]);
+        if ($table->waiter_id == 1) {
+            DB::table('tables')
+                ->where('id', $id)
+                ->update(['waiter_id' => $user]);
+        }
+        if ($table->waiter_id != $user) {
+            return redirect('/tables');
+        }
+
         return view('table', compact('table', 'order', 'user', 'wines', 'pick_wines'));
     }
 

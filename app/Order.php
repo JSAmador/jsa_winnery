@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    //
+
+    public $timestamps = true;
+
     public function orderStatus(){
         return $this->belongsTo('App\OrderStatus');
     }

@@ -8333,7 +8333,7 @@ button.close {
   }
 }
 
-.container-admin {
+.waiter-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8342,19 +8342,26 @@ button.close {
           justify-content: space-between;
 }
 
-.sidebar {
+#sidebar {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.sidebar ul {
+#sidebar ul {
   list-style: none;
+  margin-left: 2px;
+  font-size: 16px;
+  background-color: #ffffff;
 }
 
 .content {
   -webkit-box-flex: 2;
       -ms-flex-positive: 2;
           flex-grow: 2;
+}
+
+.content .panel {
+  padding: 20px;
 }
 

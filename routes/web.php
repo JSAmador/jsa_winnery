@@ -31,6 +31,7 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('/admin/orders', 'AdminOrdersController@index');
     Route::get('/admin/tables', 'AdminTablesController@index');
     Route::get('/admin/wines', 'AdminWinesController@index');
+    Route::get('/admin/logs', 'AdminLogsController@index');
     Route::post('/admin/orders/{id}/edit', 'AdminOrdersController@edit');
     Route::post('/admin/orders/{id}/process', 'AdminOrdersController@process');
     Route::post('/admin/orders/{id}/deliver', 'AdminOrdersController@deliver');

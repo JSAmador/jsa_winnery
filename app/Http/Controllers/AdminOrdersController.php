@@ -49,8 +49,9 @@ class AdminOrdersController extends Controller
 
     public function deliver($id) {
 
-        $wine = Wine::where('id', $id)->first();
-        $order = Order::where('wine_id', $id)->first();
+        $order = Order::where('id', $id)->first();
+        $wine = Wine::where('id', $order->wine_id)->first();
+
         if ($wine->is_available) {
             DB::table('orders')
                 ->where('id', $order->id)
@@ -64,6 +65,7 @@ class AdminOrdersController extends Controller
                 ->update(['order_status_id' => 5]);
         }
         $orders = Order::all();
+
         return view('admin.orders', ['orders' => $orders]);
 
     }

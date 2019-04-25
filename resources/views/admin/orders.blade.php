@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container waiter-container">
         <nav id="sidebar">
             <h3>Dashboard</h3>
             <ul>
-                <li><a href="http://localhost/jsa_winnery/public/admin/orders">Orders</a></li>
-                <li><a href="http://localhost/jsa_winnery/public/admin/tables">Tables</a></li>
-                <li><a href="http://localhost/jsa_winnery/public/admin/wines">Wines</a></li>
+                <li><a href="/admin/orders">Orders</a></li>
+                <li><a href="/admin/tables">Tables</a></li>
+                <li><a href="/admin/wines">Wines</a></li>
+                <li><a href="/admin/logs">Logs</a></li>
             </ul>
         </nav>
         <div class="content">
@@ -48,7 +49,7 @@
                                                     </div>
                                                     {!! Form::close() !!}
                                                 @elseif($order->order_status_id == 3)
-                                                    {!! Form::open(['method'=>'POST', 'action'=>['AdminOrdersController@deliver', $order->wine->id]]) !!}
+                                                    {!! Form::open(['method'=>'POST', 'action'=>['AdminOrdersController@deliver', $order->id]]) !!}
                                                     <div class="form-group">
                                                         {!! Form::submit('Deliver', ['class'=>'btn btn-success']) !!}
                                                     </div>

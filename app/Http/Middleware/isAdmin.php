@@ -19,6 +19,8 @@ class IsAdmin
         $user = Auth::user();
         if($user->isAdmin()){
             return redirect()->intended('/home');
+        } else {
+            return redirect('/tables');
         }
         return $next($request);
     }
