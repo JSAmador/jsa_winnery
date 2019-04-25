@@ -1,25 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+use Illuminate\Database\Seeder;
 
-use App\Wine;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use SimpleXMLElement;
-
-class AdminWinesController extends Controller
+class WineTableSeeder extends Seeder
 {
-
-    public function index()
-    {
-        //
-        $wines = Wine::all();
-        return view('admin.wines', ['wines' => $wines]);
-    }
-
-
-
-    public function bulkStore()
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
     {
         //
         $feed = file_get_contents('https://www.winespectator.com/rss/rss?t=dwp');
@@ -38,6 +28,5 @@ class AdminWinesController extends Controller
             );
 
         }
-
     }
 }

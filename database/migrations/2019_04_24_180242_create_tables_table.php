@@ -15,6 +15,8 @@ class CreateTablesTable extends Migration
     {
         Schema::create('tables', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('table_num');
+            $table->boolean('is_available');
             $table->timestamps();
         });
     }

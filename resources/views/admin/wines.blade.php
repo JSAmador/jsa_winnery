@@ -14,7 +14,20 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
+                        <div class="panel-heading">Wines</div>
 
+                        <?php foreach ($wines as $wine): ?>
+                        <div class="wine">
+                            <div class="wine-header">
+                                <h2> <?= $wine->name ?> </h2>
+                            </div>
+                            <div class="wine-link">
+                                <a href="<?= htmlSpecialChars($wine->link) ?>" target="_blank">
+                                    more info
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>
