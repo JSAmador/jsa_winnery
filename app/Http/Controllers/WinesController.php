@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Wine;
 use Illuminate\Http\Request;
 
-class WinesConroller extends Controller
+class WinesController extends Controller
 {
     /**
      * Display a listing of the resource.

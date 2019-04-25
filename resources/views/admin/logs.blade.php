@@ -19,19 +19,17 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Table Number</th>
-                                <th>Availability</th>
-                                <th>Waiter</th>
+                                <th>Log</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if($tables)
+                            @if($logs)
 
-                                @foreach($tables as $table)
-                                    <tr @if($table->is_available == 0) class="not-available" @endif>
-                                        <td>{{$table->table_num}}"</td>
-                                        <td>{{$table->is_available}}</td>
-                                        <td>@if($table->waiter_id != 1){{$table->waiter->name}} @endif</td>
+                                @foreach($logs as $log)
+                                    <tr>
+
+                                        <td>{{$log}}</td>
+
                                     </tr>
                                 @endforeach
                             @endif

@@ -14,11 +14,11 @@ class Order extends Model
     public function wine() {
         return $this->belongsTo('App\Wine');
     }
-    public function waiter(){
-        return $this->belongsTo('App\Waiter');
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 
     public function table() {
-        return $this->habelongsTo('App\Table');
+        return $this->belongsTo('App\Table');
     }
 }

@@ -17,6 +17,7 @@ class TablesTableSeeder extends Seeder
             DB::table('tables')->insert([
                 'table_num' => 'table_'.$i,
                 'is_available' => $is_available,
+                'waiter_id' => 1,
             ]);
         }
 

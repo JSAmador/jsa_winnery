@@ -8,7 +8,7 @@ class Table extends Model
 {
     //
     public function waiter() {
-        return $this->belongsTo('App\Waiter');
+        return $this->belongsTo('App\User');
     }
     public function orders(){
         return $this->hasMany('App\Order');

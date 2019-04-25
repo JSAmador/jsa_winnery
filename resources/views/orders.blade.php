@@ -6,8 +6,8 @@
             <h3>Dashboard</h3>
             <ul>
                 <li><a href="http://localhost/jsa_winnery/public/admin/orders">Orders</a></li>
+                <li><a href="http://localhost/jsa_winnery/public/admin/tables">Tables</a></li>
                 <li><a href="http://localhost/jsa_winnery/public/admin/wines">Wines</a></li>
-                <li><a href="http://localhost/jsa_winnery/public/admin/tables">Logs</a></li>
             </ul>
         </nav>
         <div class="content">
@@ -19,19 +19,20 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Table Number</th>
-                                <th>Availability</th>
+                                <th>Status</th>
+                                <th>Order id</th>
+                                <th>Table</th>
                                 <th>Waiter</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @if($tables)
-
-                                @foreach($tables as $table)
-                                    <tr @if($table->is_available == 0) class="not-available" @endif>
-                                        <td>{{$table->table_num}}"</td>
-                                        <td>{{$table->is_available}}</td>
-                                        <td>@if($table->waiter_id != 1){{$table->waiter->name}} @endif</td>
+                            @if($orders)
+                                @foreach($orders as $order)
+                                    <tr @if($order->order_satatus_id == 5) class="failed" @endif>
+                                        <td>{{$order->orderStatus->name}}</td>
+                                        <td>{{$order->id}}</td>
+                                        <td>{{$order->table->table_num}}</td>
+                                        <td>{{$order->user->name}}</td>
                                     </tr>
                                 @endforeach
                             @endif

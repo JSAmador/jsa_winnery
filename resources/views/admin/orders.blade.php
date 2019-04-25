@@ -23,7 +23,6 @@
                                 <th>Status</th>
                                 <th>Order_id</th>
                                 <th>Table Number</th>
-                                <th>Waiter</th>
                                 <th>Wine</th>
 
                                 
@@ -36,17 +35,32 @@
                                     <tr>
 
                                         <td>
-                                            {!! Form::open(['method'=>'PATCH', 'action'=>['PostCommentsController@update', $order->id]]) !!}
-                                            <div class="form-group">
-                                                {!! Form::submit('Process', ['class'=>'btn btn-success']) !!}
-                                            </div>
-                                            {!! Form::close() !!}
+                                                @if($order->order_status_id == 1)
+                                                    {!! Form::open(['method'=>'POST', 'action'=>['AdminOrdersController@edit', $order->id]]) !!}
+                                                    <div class="form-group">
+                                                        {!! Form::submit('Process', ['class'=>'btn btn-success']) !!}
+                                                    </div>
+                                                    {!! Form::close() !!}
+                                                @elseif($order->order_status_id == 2)
+                                                    {!! Form::open(['method'=>'POST', 'action'=>['AdminOrdersController@process', $order->id]]) !!}
+                                                    <div class="form-group">
+                                                        {!! Form::submit('Dispatch', ['class'=>'btn btn-success']) !!}
+                                                    </div>
+                                                    {!! Form::close() !!}
+                                                @elseif($order->order_status_id == 3)
+                                                    {!! Form::open(['method'=>'POST', 'action'=>['AdminOrdersController@deliver', $order->wine->id]]) !!}
+                                                    <div class="form-group">
+                                                        {!! Form::submit('Deliver', ['class'=>'btn btn-success']) !!}
+                                                    </div>
+                                                    {!! Form::close() !!}
+                                                @else
+                                                   <p>Delivered</p>
+                                                @endif
                                         </td>
-                                        <td>{{$order->status_id->name}}"></td>
-                                        <td>{{$order->id}}"></td>
-                                        <td>{{$order->table_id->table_num}}</td>
-                                        <td>{{$order->user_id->name}}</td>
-                                        <td>{{$order->wine_id->name}}</td>
+                                        <td>{{$order->orderStatus->name}}</td>
+                                        <td>{{$order->id}}</td>
+                                        <td>{{$order->table->table_num}}</td>
+                                        <td>{{$order->wine->name}}</td>
                                     </tr>
                                 @endforeach
                             @endif

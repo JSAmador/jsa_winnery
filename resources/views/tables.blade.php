@@ -19,32 +19,20 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>Take Order</th>
+                                <th>Action</th>
                                 <th>Table Number</th>
-                                <th>Availability</th>
-                                <th>Waiter</th>
-                                <th>Last Order</th>
-                                <th>Order Status</th>
+                                <th>Asigned To</th>
                             </tr>
                             </thead>
                             <tbody>
                             @if($tables)
 
                                 @foreach($tables as $table)
-                                    <tr>
+                                    <tr @if($table->is_available == 0) class="not-available" @endif>
 
-                                        <td>
-                                            {!! Form::open(['method'=>'POST', 'action'=>['OrderController@create', $order->id]]) !!}
-                                            <div class="form-group">
-                                                {!! Form::submit('Order', ['class'=>'btn btn-success']) !!}
-                                            </div>
-                                            {!! Form::close() !!}
-                                        </td>
-                                        <td>{{$order->status_id->name}}"></td>
-                                        <td>{{$order->id}}"></td>
-                                        <td>{{$order->table_id->table_num}}</td>
-                                        <td>{{$order->user_id->name}}</td>
-                                        <td>{{$order->wine_id->name}}</td>
+                                        <td><a href="{{'/table/'. $table->id}}">@if($table->waiter_id == 0)Get Table</a>  @else View Table @endif</td>
+                                        <td>{{$table->table_num}}"</td>
+                                        <td>@if($table->waiter_id != 1){{$table->waiter->name}} @endif</td>
                                     </tr>
                                 @endforeach
                             @endif

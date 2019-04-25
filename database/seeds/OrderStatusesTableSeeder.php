@@ -17,7 +17,7 @@ class OrderStatusesTableSeeder extends Seeder
         ]);
 
         DB::table('order_statuses')->insert([
-            'name' => 'process',
+            'name' => 'processing',
             'id' => 2,
         ]);
 
@@ -29,6 +29,11 @@ class OrderStatusesTableSeeder extends Seeder
         DB::table('order_statuses')->insert([
             'name' => 'dispatched',
             'id' => 4,
+        ]);
+
+        DB::table('order_statuses')->insert([
+            'name' => 'failed',
+            'id' => 5,
         ]);
     }
 }

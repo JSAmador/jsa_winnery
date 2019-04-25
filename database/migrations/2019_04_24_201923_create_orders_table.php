@@ -15,11 +15,16 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('table_id');
-            $table->integer('user_id');
-            $table->integer('wine_id');
-            $table->integer('order_status_id');
+            $table->unsignedInteger('table_id')->unsigned();
+            $table->unsignedInteger('user_id')->unsigned();
+            $table->unsignedInteger('wine_id')->unsigned();
+            $table->unsignedInteger('order_status_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('table_id')->references('id')->on('tables');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('wine_id')->references('id')->on('wines');
+            $table->foreign('order_status_id')->references('id')->on('order_statuses');
         });
     }
 
